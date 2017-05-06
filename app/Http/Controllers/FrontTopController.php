@@ -23,6 +23,6 @@ class FrontTopController extends Controller
 //$users = DB::select('select * from posts where name = ?', [1]);
 $users = DB::select('select * from posts');
 
-        return view('about', ['users' => $users]); 
+        //return view('about', ['users' => $users]); 
     	}
 }

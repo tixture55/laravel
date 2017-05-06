@@ -37,9 +37,24 @@ class UserController extends Controller
     //public function show($id)
     public function show()
     {
-$users = DB::select('select * from posts');
+	$users = DB::select('select * from posts');
+	
+	$result = DB::table('tickets')
+            ->where('title', '=', 'John')
+            ->orWhere(function ($query) {
+                $query->where('posts_id', '>', 1)
+                      ->where('status', '<>', 'open');
+            })
+            ->get();
 
-        return view('about', ['users' => $users]); 
+	//DB::table('posts')->remember(120)->get();
+       
+	//$column_diff = $users = DB::table('tickets')
+        //        ->whereColumn('posts_id', 'task_id');
+ 
+	//return view('about', ['users' => $users , 'column' => $column_diff]); 
+	//return view('about', ['users' => $users]); 
+	return view('about', ['users' => $result]); 
         //$user = $this->users->find($id);
 
         //return view('user.profile', ['user' => $user]);
