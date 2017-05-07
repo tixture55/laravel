@@ -14,28 +14,29 @@ class TestController extends Controller
         // 「そういう気分じゃないんだ...」だそう。
         // つまりインスタンスが新しく生成されていまっている。
         $hoge->sayHello();
-	$users = DB::select('select * from posts');
+	$users = DB::select('select * from flights');
 	
-	$result = DB::table('tickets')
+	/*$result = DB::table('flights')
             ->where('title', '=', 'John')
             ->orWhere(function ($query) {
                 $query->where('posts_id', '>', 1)
                       ->where('status', '<>', 'open');
             })
             ->get();
-
+*/
 	//DB::table('posts')->remember(120)->get();
        
-	//$column_diff = $users = DB::table('tickets')
-        //        ->whereColumn('posts_id', 'task_id');
  
 	//return view('about', ['users' => $users , 'column' => $column_diff]); 
 	//return view('about', ['users' => $users]); 
-	return view('about', ['users' => $result]); 
+	return view('about', ['users' => $users]); 
         //$user = $this->users->find($id);
 
         //return view('user.profile', ['user' => $user]);
-        // 「こんにちは！」
-       //\App::make('hoge')->sayHello();
     }
+	public function detail(){
+
+
+
+	}
 }
